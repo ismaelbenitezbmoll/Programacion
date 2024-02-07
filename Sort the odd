@@ -1,0 +1,23 @@
+public class Kata {
+  public static int[] sortArray(int[] array) {
+    int[] arrayRes = new int[array.length];
+    
+    for (int i = 0; i < array.length; i++) {
+      arrayRes[i] = array[i];
+    }
+    
+    for (int i = 0; i < arrayRes.length; i++) {
+      if (arrayRes[i] % 2 == 1) {
+        for (int j = i + 1; j < arrayRes.length; j++) {
+          if (arrayRes[j] % 2 == 1 && arrayRes[j] < arrayRes[i]) {
+            int aux = arrayRes[i];
+            arrayRes[i] = arrayRes[j];
+            arrayRes[j] = aux;
+          }
+        }
+      }
+    }
+    
+    return arrayRes;
+  }
+}
