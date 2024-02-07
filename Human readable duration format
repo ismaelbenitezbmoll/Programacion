@@ -1,0 +1,68 @@
+public class TimeFormatter {
+   public static String formatDuration(int seconds) {
+    int minutes = 0, hours = 0, days = 0, years = 0;
+    String strSeconds = "seconds", strMinutes = "minutes", strHours = "hours", strDays = "days", strYears = "years";
+    String tiempo = "";
+    
+    if(seconds == 0){
+    return "now";
+  }
+    while (seconds >= 60) {
+        seconds -= 60;
+        minutes++;
+        if (minutes >= 60) {
+            hours++;
+            minutes = 0;
+        }
+        if (hours >= 24) {
+            days++;
+            hours = 0;
+        }
+        if (days >= 365) {
+            years++;
+            days = 0;
+        }
+    }
+
+
+
+    if (years > 0) {
+       tiempo += (years == 1 ? "1 year" : years + " years");
+        if (days > 0 || hours > 0 || minutes > 0 || seconds > 0) {
+            tiempo += ", ";
+        }
+    }
+
+    if (days > 0) {
+       tiempo += (days == 1 ? "1 day" : days + " days");
+        if (hours > 0 || minutes > 0 || seconds > 0) {
+            tiempo += ", ";
+        }else if (hours == 0 && minutes == 0 && seconds > 0 ||hours == 0 && minutes > 0 && seconds == 0 || hours > 0 && minutes == 0 && seconds == 0){
+           tiempo += " and ";
+        }
+    }
+
+    if (hours > 0) {
+        tiempo += (hours == 1 ? "1 hour" : hours + " hours");
+        if (minutes > 0 && seconds > 0) {
+            tiempo += ", ";
+        }else if(minutes == 0 && seconds > 0 || minutes > 0 && seconds == 0){
+          tiempo += " and ";
+        }
+    }
+
+    if (minutes > 0) {
+     tiempo += (minutes == 1 ? "1 minute" : minutes + " minutes");
+      if (seconds > 0) {
+        tiempo += " and ";
+        }
+    }
+
+    if (seconds > 0) {
+        tiempo += (seconds == 1 ? "1 second" : seconds + " seconds");
+    }
+     
+    return tiempo;
+}
+  
+  }
