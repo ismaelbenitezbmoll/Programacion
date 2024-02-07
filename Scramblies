@@ -1,0 +1,27 @@
+public class Scramblies {
+    
+    public static boolean scramble(String str1, String str2) { 
+        char[] arrayStr1 = str1.toCharArray();
+        char[] arrayStr2 = str2.toCharArray();
+        boolean res = false;
+        int contador = 0;
+        
+        if (arrayStr1.length >= arrayStr2.length) {
+            for (int i = 0; i < arrayStr2.length; i++) {
+                for (int j = 0; j < arrayStr1.length; j++) {
+                    if (arrayStr1[j] == arrayStr2[i]) {
+                        contador++;
+                        arrayStr1[j] = ' '; // Marca el carácter como ya utilizado
+                        break;
+                    }
+                }
+            } 
+        }
+        
+        if (contador == arrayStr2.length) {
+            res = true;
+        }
+        
+        return res;
+    }
+}
