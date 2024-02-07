@@ -1,0 +1,41 @@
+public class Kata {
+    public static int getLengthOfMissingArray(Object[][] arrayOfArrays) {
+     int minLength = Integer.MAX_VALUE;
+      int maxLength = 0;
+        if (arrayOfArrays == null || arrayOfArrays.length == 0) {
+            return 0;
+        }
+
+        int suma = 0;
+        int numerodearrays = 0;
+    
+      
+    for (Object[] array : arrayOfArrays) {
+            if (array == null || array.length == 0) {
+                return 0;
+            }   
+            if (array.length < minLength) {
+                minLength = array.length;
+            }
+      
+            if (array.length > maxLength) {
+                maxLength = array.length;
+            }
+        }
+
+        for (int i = 0; i < arrayOfArrays.length; i++) {
+            if (arrayOfArrays[i] == null || arrayOfArrays[i].length == 0) {
+                return 0;
+            }
+            suma += arrayOfArrays[i].length;
+        }
+
+      for (int j = minLength; j <= maxLength; j++) {
+           numerodearrays = numerodearrays + j;
+        }
+  
+
+        return numerodearrays - suma ;
+    
+  }
+}
