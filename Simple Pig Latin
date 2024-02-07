@@ -1,0 +1,18 @@
+public class PigLatin {
+    public static String pigIt(String str) {
+        String[] palabras = str.split("\\s+");
+        StringBuilder resultado = new StringBuilder();
+
+        for (String palabra : palabras) {
+            if (palabra.matches("[a-zA-Z]+")) {
+                char primeraLetra = palabra.charAt(0);
+                String fraseRes = palabra.substring(1) + primeraLetra + "ay";
+                resultado.append(fraseRes).append(" ");
+            } else {
+                resultado.append(palabra).append(" ");
+            }
+        }
+
+        return resultado.toString().trim();
+    }
+}
