@@ -1,0 +1,20 @@
+public class BasicEncrypt {
+
+    public String encrypt(String text, int rule) {
+        String output = "";
+        char[] encriptado = text.toCharArray();
+
+        for (int i = 0; i < encriptado.length; i++) {
+            char currentChar = encriptado[i];
+            int numeroEnc = (int) currentChar + rule;
+            if(numeroEnc > 255){
+              numeroEnc = numeroEnc % 256;
+            }
+            char encryptedChar = (char) numeroEnc;
+            output += encryptedChar;
+        }
+      
+
+        return output;
+    }
+}
